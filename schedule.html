@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>Table</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div id="button">Schedule</div>
+        <div id="table" class="table">
+		  <div class="modal-content">
+		    
+		    <span class="close">&times;</span>
+		    <table>
+	            <tr>
+	            <th colspan="10"> BATCH-5</th>
+	            </tr>
+	            <tr class="week">
+	                <td>Weeks</td>
+	                <td>8:30</td>
+	                <td>9:30</td>
+	                <td>10:30</td>
+	                <td>11:30</td>
+	                <td>12:30</td>
+	                <td>1:30</td>
+	                <td>2:30</td>
+	                <td>3:30</td>
+	                <td>4:30</td>
+	            </tr>
+	        </table>
+
+		      
+		  </div>
+		</div>
+        
+           
+        </table>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+    	$(".close").click(function(){
+            $(".table").css("display","none");
+            $("body").css("background-color", "white"); 
+           });
+
+    	$("#button").click(function(){
+            $(".table").css("display","block");
+            $("body").css("background-color", "#2b202b"); 
+            
+           });
+
+        $(document).ready(function(){
+            $.ajax({
+                url:"http://localhost:8080/schedule.json",
+                success:function(data){
+                	console.log(data);
+                    var week=["Sunday","Monday","Tuesday","Wednesday","Thrusday","Friday","Saturday"];
+                    function fun(){
+                        var date=new Date();
+                        var day=week[date.getDay()];
+                        var count=0;
+                        var str="";
+                        for(var j=0;j<data[1].length;j++){
+                            if(day!=data[1][j]){
+                                str+='<tr class="fade"><td>'+data[1][j]+'</td>';
+                            }
+                            else
+                                str+='<tr style="font-weight:bold"><td>'+data[1][j]+'</td>';
+                            for(var i=count;i<count+8;i++){
+                                if(i==count+4){
+                                    str+='<td>Break</td>'
+                                }
+                                str+='<td>'+data[0][i]+'</td>';
+                            }
+                            str+='</tr>';
+                            count+=8;
+                        }
+                            return str;
+                    };
+                     $("table").append(fun());
+                     $(".fade").fadeTo("slow", 0.3); 
+                     
+                     // $(".close".click(function(){
+                     // 	$(".table").css("display","none");
+                     // });
+            
+                },
+                error:function(error){
+                    alert("error");
+                }
+
+
+
+
+            })
+
+        });
+    
+    
+    
+    
+    </script>
+
+
+
+</html>

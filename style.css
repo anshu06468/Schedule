@@ -1,0 +1,64 @@
+        table{
+    		border-collapse: collapse;
+    		 width: 100%;
+    		 text-align: center;
+    		 font-family: arial, sans-serif;
+    		} 
+        .table {
+        	display: none;
+        	min-height: fit-content;
+           	margin:auto;
+            width: fit-content;
+            margin-top: 80px;
+            border: 1px solid #888;
+		    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+		    animation-name: animatetop;
+		    animation-duration: 2s;
+
+        }
+		@keyframes animatetop {
+		  from {margin-top:10px;opacity:0}
+		  to {margin-top:80px; opacity:1}
+		}
+
+			/* The Close Button */
+		.close {
+		  color: white;
+		  float: right;
+          margin-right: 10px;
+		  font-size: 28px;
+		  font-weight: bold;
+		}
+
+		.close:hover
+		 {
+		  color: #000;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+
+        td, th {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            background-color: white ;
+        }
+
+        .week td{
+            background-color:#8791b1 ;
+            font-weight: bold
+        }
+        
+        #button{
+            height:30px;
+            width:100px;
+            margin:0 auto; 
+            background-color: #2b202b;
+            color:white;
+            font-weight: 700;
+            border-radius: 5px;
+            font-size: 20px;
+            cursor: pointer;
+            border:2px solid black;
+            text-align: center;
+            padding-top: 5px;
+        }
